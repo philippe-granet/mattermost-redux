@@ -486,7 +486,7 @@ export function getPostThread(postId, skipAddToChannel = true) {
         let posts;
         try {
             posts = await Client4.getPostThread(postId);
-            getProfilesAndStatusesForPosts(posts.posts, dispatch, getState);
+            await getProfilesAndStatusesForPosts(posts.posts, dispatch, getState);
         } catch (error) {
             forceLogoutIfNecessary(error, dispatch, getState);
             dispatch(batchActions([
@@ -572,7 +572,7 @@ export function getPosts(channelId, page = 0, perPage = Posts.POST_CHUNK_SIZE) {
 
         try {
             posts = await Client4.getPosts(channelId, page, perPage);
-            getProfilesAndStatusesForPosts(posts.posts, dispatch, getState);
+            await getProfilesAndStatusesForPosts(posts.posts, dispatch, getState);
         } catch (error) {
             forceLogoutIfNecessary(error, dispatch, getState);
             dispatch(batchActions([
@@ -653,7 +653,7 @@ export function getPostsSince(channelId, since) {
         let posts;
         try {
             posts = await Client4.getPostsSince(channelId, since);
-            getProfilesAndStatusesForPosts(posts.posts, dispatch, getState);
+            await getProfilesAndStatusesForPosts(posts.posts, dispatch, getState);
         } catch (error) {
             forceLogoutIfNecessary(error, dispatch, getState);
             dispatch(batchActions([
@@ -732,7 +732,7 @@ export function getPostsBefore(channelId, postId, page = 0, perPage = Posts.POST
         let posts;
         try {
             posts = await Client4.getPostsBefore(channelId, postId, page, perPage);
-            getProfilesAndStatusesForPosts(posts.posts, dispatch, getState);
+            await getProfilesAndStatusesForPosts(posts.posts, dispatch, getState);
         } catch (error) {
             forceLogoutIfNecessary(error, dispatch, getState);
             dispatch(batchActions([
@@ -813,7 +813,7 @@ export function getPostsAfter(channelId, postId, page = 0, perPage = Posts.POST_
         let posts;
         try {
             posts = await Client4.getPostsAfter(channelId, postId, page, perPage);
-            getProfilesAndStatusesForPosts(posts.posts, dispatch, getState);
+            await getProfilesAndStatusesForPosts(posts.posts, dispatch, getState);
         } catch (error) {
             forceLogoutIfNecessary(error, dispatch, getState);
             dispatch(batchActions([
